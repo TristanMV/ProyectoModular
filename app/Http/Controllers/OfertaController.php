@@ -29,7 +29,7 @@ class OfertaController extends Controller
      */
     public function store(Request $request)
     {
-        Oferta::create($request->all());
+        //Oferta::create($request->all());
         return redirect()->route('ofertas.index');
     }
 
