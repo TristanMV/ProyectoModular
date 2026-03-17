@@ -12,7 +12,8 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        //
+        $ofertas = \App\Models\Oferta::all(); // Trae todas las ofertas de la DB
+        return view('ofertas.index', compact('ofertas')); // Llama a la vista
     }
 
     /**
