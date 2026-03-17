@@ -12,8 +12,8 @@ class OfertaController extends Controller
      */
     public function index()
     {
-        $ofertas = \App\Models\Oferta::all(); // Trae todas las ofertas de la DB
-        return view('ofertas.index', compact('ofertas')); // Llama a la vista
+        $ofertas = Oferta::all(); 
+        return view('ofertas.index', compact('ofertas'));
     }
 
     /**
@@ -21,7 +21,7 @@ class OfertaController extends Controller
      */
     public function create()
     {
-        //
+        return view('ofertas.create');
     }
 
     /**
@@ -29,7 +29,8 @@ class OfertaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Oferta::create($request->all());
+        return redirect()->route('ofertas.index');
     }
 
     /**
@@ -37,7 +38,7 @@ class OfertaController extends Controller
      */
     public function show(Oferta $oferta)
     {
-        //
+        return view('ofertas.show', compact('oferta'));
     }
 
     /**
@@ -45,7 +46,7 @@ class OfertaController extends Controller
      */
     public function edit(Oferta $oferta)
     {
-        //
+        return view('ofertas.edit', compact('oferta'));
     }
 
     /**
@@ -53,7 +54,8 @@ class OfertaController extends Controller
      */
     public function update(Request $request, Oferta $oferta)
     {
-        //
+        $oferta->update($request->all());
+        return redirect()->route('ofertas.index');
     }
 
     /**
@@ -61,6 +63,7 @@ class OfertaController extends Controller
      */
     public function destroy(Oferta $oferta)
     {
-        //
+        $oferta->delete();
+        return redirect()->route('ofertas.index');
     }
 }
